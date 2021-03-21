@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html >
+<!--From https://codepen.io/frytyler/pen/EGdtg-->
+<head>
+  <meta charset="UTF-8">
+  <title>ML API</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  
+</head>
+
+<body>
+ <div class="container text-center">
+ <div class="login">
+   <div class="container-fluid" style="background-color: blueviolet; color:white">
+      <h1>Sepsis Prediction</h1>
+      <p>Not just an idea. It's a Solution</p>
+   </div>
+
+   <br>
+  <p style="color: red;">There are 101 testcases enter a number between 0 and 100</p>
+  <form action="{{ url_for('testcasepredict')}}"method="post">
+   <input   type="text" name="testcase" placeholder="testcase" required="required" /> <br> <br>
+   <button type="submit" class="btn btn-primary ">Get Result</button>
+  </form>
+  <br>
+  <br>
+  {{prediction_testcase}}
+
+  <br>
+   Chance of having Sepsis : {{proba_1}} <br>
+   Chance of not having Sepsis : {{proba_0}}
+  <br>
+    <p style="color: red;">Enter the value within the range specified</p>
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('predict')}}"method="post">
+        Enter the values<br>
+    	<input type="text" name="O2Sat" placeholder="O2Sat" required="required" /> 27.0 - 100.0 
+        <input type="text" name="Temp" placeholder="Temp" required="required" /> 26.67 - 41.97 <br> <br>
+        <input type="text" name="SBP" placeholder="SBP" required="required" /> 34.0 - 245.0 
+        <input type="text" name="EtCO2" placeholder="EtCO2" required="required" /> 10.0 - 83.0<br> <br>
+        <input type="text" name="HCO3" placeholder="HCO3" required="required" /> 5.0 - 47.0
+        <input type="text" name="SaO2" placeholder="SaO2" required="required" /> 33.5 - 100.0<br> <br>
+        <input type="text" name="BUN" placeholder="BUN" required="required" /> 1.0 - 171.0 
+        <input type="text" name="PTT" placeholder="PTT" required="required" /> 18.8 - 249.9<br> <br>
+        <input type="text" name="Alkalinephos" placeholder="Alkalinephos" required="required" /> 11.0 - 1799.0
+        <input type="text" name="Calcium" placeholder="Calcium" required="required" /> 1.07 - 19.6<br> <br>
+        <input type="text" name="Chloride" placeholder="Chloride" required="required" /> 69.0 - 139.0
+        <input type="text" name="Creatinine" placeholder="Creatinine" required="required" /> 0.1 - 13.9<br> <br>
+        <input type="text" name="Glucose" placeholder="Glucose" required="required" /> 17.0 - 787.0
+        <input type="text" name="Bilirubin_total" placeholder="Bilirubin_total" required="required" /> 0.1 - 43.7 <br> <br>
+        <input type="text" name="WBC" placeholder="WBC" required="required" /> 0.1 - 215.3
+        <input type="text" name="Fibrinogen" placeholder="Fibrinogen" required="required" /> 35.0 - 1383.0<br> <br>
+        <input type="text" name="Platelets" placeholder="Platelets" required="required" /> 7.0 - 1197.0 <br> <br>
+        
+
+        <button type="submit" class="btn btn-primary ">Predict</button>
+    </form>
+
+   <br>
+   <br>
+   {{ prediction_text }}
+   
+    
+ </div>
+</div> 
+
+<div class="container text-center" style="background-color: aquamarine;">
+  <h2>Features</h2>
+  <div class="flex">
+    <p>90% accuracy</p>
+    <p>Less defect rate (0.06%)</p>
+    <p>Provides faster solution</p>
+    <p>New in india, Now in india</p>
+  </div>
+</div>
+
+<br> 
+<div class="container text-center" style="background-color: blueviolet; color:white;">
+  <h2>Done by</h2>
+  <p>Sara S</p>
+  <p>Swetha S</p>
+  <p>Suchitra S</p>
+  <p>Sulaiha shameena M</p>
+</div>
+</body>
+</html>
